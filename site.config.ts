@@ -1,7 +1,7 @@
 import type { SiteConfig } from '@/types'
 
 const config: SiteConfig = {
-  title: 'Lotte.dev',
+  title: 'lottee.dev',
   description: 'Just for fun',
   date: {
     locale: 'zh-CN',

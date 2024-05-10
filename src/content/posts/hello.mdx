@@ -1,0 +1,48 @@
+---
+title: Hello-World
+createdAt: 2018-09-16 16:14:58
+draft: false
+---
+
+Hello, This is the first post.
+
+```ts
+// @errors: 2322
+// Declare a tuple type  
+let x: [string, number]
+
+// Initialize it
+x = ['hello', 10]
+// Initialize it incorrectly
+x = [10, 'hello']
+```
+
+## Header1
+
+```python
+def hello(name):      # [!code --]
+def hello(name: str): # [!code ++]
+    print(name) 
+
+hello("world")        # [!code highlight]
+```
+
+## Header2
+
+```rust
+// [!code word:name]
+fn main() {
+    let name = "Hello World!";
+    println!("{}", name);
+}
+```
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hello World!")  // [!code focus]    
+}
+```

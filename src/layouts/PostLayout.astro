@@ -1,0 +1,29 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import Layout from './Layout.astro'
+// import '@/styles/markdown.css'
+// import '@/styles/shiki-transformers.css'
+// import '@/styles/twoslash-rich.css'
+
+interface Props {
+  post: CollectionEntry<'posts'>
+}
+
+const { post } = Astro.props
+const { headings } = await post.render()
+---
+<Layout title={post.data.title} description={post.data.description ?? ""}>
+    <div class="m-auto mb-8">
+        {headings.length && post}
+        <div class="mt-8 gap-x10 lg:flex lg:items-start">
+            <article>
+                <slot />
+            </article>
+        </div>
+        <button 
+            title="Back to Top" 
+            class="z-99 fixed right-6 bottom-8 h-8 w-8 items-center justify-center rounded-full text-2xl">
+            <div class="i-ri:arrow-up-circle-fill"></div>
+        </button>
+    </div>
+</Layout>
