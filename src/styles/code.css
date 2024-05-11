@@ -1,0 +1,123 @@
+/* inline code */
+.md-content :not(pre, h1, h2, h3, h4, h5, h6)>code {
+    font-size: var(--c-code-font-size);
+    color: var(--c-code-color);
+}
+
+.md-content :not(pre)>code {
+    border-radius: 4px;
+    padding: 3px 6px;
+    background-color: var(--c-code-bg);
+    transition:
+        color 0.25s,
+        background-color 0.5s;
+}
+
+.md-content a>code {
+    color: var(--c-code-link-color);
+}
+
+.md-content a:hover>code {
+    color: var(--c-code-link-hover-color);
+}
+
+.md-content .astro-code {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    padding: 20px 0;
+    background: transparent;
+    overflow-x: auto;
+}
+
+.md-content .astro-code code {
+    display: block;
+    padding: 0 24px;
+    width: fit-content;
+    min-width: 100%;
+    line-height: var(--c-code-line-height);
+    font-size: var(--c-code-font-size);
+    color: var(--c-code-block-color);
+    transition: color 0.5s;
+}
+
+.md-content .astro-code code .highlighted {
+    background-color: var(--c-code-line-highlight-color);
+    transition: background-color 0.5s;
+    margin: 0 -24px;
+    padding: 0 24px;
+    width: calc(100% + 2 * 24px);
+    display: inline-block;
+}
+
+.md-content .astro-code code .highlighted.error {
+    background-color: var(--c-code-line-error-color);
+}
+
+.md-content .astro-code code .highlighted.warning {
+    background-color: var(--c-code-line-warning-color);
+}
+
+
+.md-content .astro-code code .diff {
+    transition: background-color 0.5s;
+    margin: 0 -24px;
+    padding: 0 24px;
+    width: calc(100% + 2 * 24px);
+    display: inline-block;
+}
+
+.md-content .astro-code code .diff::before {
+    position: absolute;
+    left: 10px;
+}
+
+.md-content .astro-code .has-focused-lines .line:not(.has-focus) {
+    filter: blur(0.095rem);
+    opacity: 0.4;
+    transition:
+        filter 0.35s,
+        opacity 0.35s;
+}
+
+.md-content .astro-code .has-focused-lines .line:not(.has-focus) {
+    opacity: 0.7;
+    transition:
+        filter 0.35s,
+        opacity 0.35s;
+}
+
+.md-content .astro-code:hover .has-focused-lines .line:not(.has-focus) {
+    filter: blur(0);
+    opacity: 1;
+}
+
+.md-content .astro-code code .diff.remove {
+    background-color: var(--c-code-line-diff-remove-color);
+    opacity: 0.7;
+}
+
+.md-content .astro-code code .diff.remove::before {
+    content: '-';
+    color: var(--c-code-line-diff-remove-symbol-color);
+}
+
+.md-content .astro-code code .diff.add {
+    background-color: var(--c-code-line-diff-add-color);
+}
+
+.md-content .astro-code code .diff.add::before {
+    content: '+';
+    color: var(--c-code-line-diff-add-symbol-color);
+}
+
+.md-content .astro-code .highlighted-word {
+    background-color: var(--c-color-green);
+    border: 1px solid var(--c-color-green);
+    padding: 1px 3px;
+    border-radius: 4px;
+}
+
+.md-content .has-focused .focused {
+    background-color: var(--c-color-green);
+}

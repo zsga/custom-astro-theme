@@ -19,6 +19,7 @@ export default defineConfig({
     mdx(),
   ],
   markdown: {
+    syntaxHighlight: 'shiki',
     shikiConfig: {
       themes: {
         dark: 'github-dark',
@@ -28,6 +29,7 @@ export default defineConfig({
       wrap: true,
       transformers: [
         transformerTwoslash({
+          // explicitTrigger: true,
           renderer: rendererRich(),
         }),
         transformerNotationDiff(),

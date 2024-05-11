@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content'
 import PostLayout from '@/layouts/PostLayout.astro'
 import type { GetStaticPaths } from 'astro'
+import '@shikijs/twoslash/style-rich.css'
 
 export const getStaticPaths = (async () => {
   const blogEntries = await getCollection('posts')

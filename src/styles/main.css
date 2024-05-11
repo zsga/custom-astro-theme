@@ -1,0 +1,75 @@
+:root {
+    --c-bg: #fff;
+    --c-scrollbar: #eee;
+    --c-scrollbar-hover: #bbb;
+    --c-color-green: #18794e;
+
+    --c-code-bg: rgba(142, 150, 170, 0.14);
+    --c-code-font-size: 0.875em;
+    --c-code-color: #3451b2;
+    --c-code-link-color: var(--c-code-color);
+    --c-code-link-hover-color: #3a5ccc;
+    --c-code-line-height: 1.7;
+    --c-code-block-color: rgba(60, 60, 67, 0.78);
+    --c-code-line-highlight-color: var(--c-code-bg);
+    --c-code-line-error-color: rgba(244, 63, 94, 0.14);
+    --c-code-line-warning-color: rgba(234, 179, 8, 0.14);
+
+    --c-code-line-diff-remove-color: var(--c-code-line-error-color);
+    --c-code-line-diff-remove-symbol-color: #b8272c;
+    --c-code-line-diff-add-color: rgba(16, 185, 129, 0.14);
+    --c-code-line-diff-add-symbol-color: var(--c-color-green);
+}
+
+html {
+    background-color: var(--c-bg);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+html.dark {
+    --c-bg: #050505;
+    --c-scrollbar: #111;
+    --c-scrollbar-hover: #222;
+    --c-color-green: #3dd68c;
+
+    --c-code-bg: rgba(101, 117, 133, 0.16);
+    --c-code-color: #a8b1ff;
+    --c-code-link-hover-color: #5c73e7;
+    --c-code-block-color: rgba(235, 235, 245, 0.6);
+    --c-code-line-error-color: rgba(244, 63, 94, 0.16);
+    --c-code-line-warning-color: rgba(234, 179, 8, 0.16);
+    --c-code-line-diff-remove-symbol-color: #f66f81;
+    --c-code-line-diff-add-color: rgba(16, 185, 129, 0.16);
+}
+
+::selection {
+    background: #8884;
+}
+
+* {
+    scrollbar-color: var(--c-scrollbar) var(--c-bg);
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar:horizontal {
+    height: 6px;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+    background: var(--c-bg);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--c-scrollbar);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--c-scrollbar-hover);
+}
