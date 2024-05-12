@@ -6,9 +6,12 @@ import {
 } from '@shikijs/transformers'
 import { rendererRich, transformerTwoslash } from '@shikijs/twoslash'
 import { defineConfig } from 'astro/config'
+import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis'
+import remarkToc from 'remark-toc'
 import UnoCSS from 'unocss/astro'
 
 import mdx from '@astrojs/mdx'
+import { remarkReadingTime } from './src/utils/remarkReadingTime'
 
 // https://astro.build/config
 export default defineConfig({
@@ -39,5 +42,7 @@ export default defineConfig({
         transformerNotationWordHighlight(),
       ],
     },
+    remarkPlugins: [remarkToc, remarkReadingTime],
+    rehypePlugins: [rehypeAccessibleEmojis],
   },
 })

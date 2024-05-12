@@ -1,0 +1,9 @@
+---
+const props = Astro.props
+---
+
+<div>
+    <button class="copy"></button>
+    <span class="lang"></span>
+    <pre {...props}><slot /></pre>
+</div>

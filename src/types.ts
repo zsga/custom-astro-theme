@@ -35,11 +35,6 @@ interface Friend {
   desc?: string
 }
 
-interface DataOptions {
-  locale: string | undefined
-  options: Intl.DateTimeFormatOptions
-}
-
 export interface SiteConfig {
   title: string // website title
   description: string // website description info
@@ -49,5 +44,4 @@ export interface SiteConfig {
   favicon?: Favicon
   social?: Link[] // social media accounts
   friends?: Friend[]
-  date: DataOptions
 }

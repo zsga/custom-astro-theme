@@ -1,0 +1,49 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import PostPreview from '@/components/PostPreview.astro'
+import Layout from '@/layouts/Layout.astro'
+import { getAllPosts, getUniqueTags, sortMDByDate } from '@/utils/post'
+import type { GetStaticPaths, Page } from 'astro'
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const allPosts = await getAllPosts()
+  const allPostsByDate = sortMDByDate(allPosts)
+  const uniqueTags = getUniqueTags(allPostsByDate)
+
+  return uniqueTags.flatMap((tag) => {
+    const filterPosts = allPostsByDate.filter((post) => {
+      if (post.data.tags) {
+        return post.data.tags.includes(tag)
+      }
+      return false
+    })
+
+    return paginate(filterPosts, {
+      pageSize: 10,
+      params: { tag },
+    })
+  })
+}) satisfies GetStaticPaths
+
+interface Props {
+  page: Page<CollectionEntry<'posts'>>
+}
+
+const { page } = Astro.props
+const { tag } = Astro.params
+---
+
+<Layout title={`Tag: ${tag}`} description={`View all posts with the tag - ${tag}`}>
+    <h1 class="mb-6 mt-5 flex items-end gap-x-2 text-2xl font-bold">
+        Tag: <span class="text-xl">#{tag}</span>
+    </h1>
+    <section>
+        <ul class="flex flex-col gap-y-3 text-start">
+            {
+                page.data.map((p) => (
+                    <PostPreview post={p} />
+                ))
+            }
+        </ul>
+    </section>
+</Layout>
