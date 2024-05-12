@@ -1,3 +1,4 @@
+import mdx from '@astrojs/mdx'
 import {
   transformerNotationDiff,
   transformerNotationFocus,
@@ -5,13 +6,13 @@ import {
   transformerNotationWordHighlight,
 } from '@shikijs/transformers'
 import { rendererRich, transformerTwoslash } from '@shikijs/twoslash'
-import { defineConfig } from 'astro/config'
+import { defineConfig, passthroughImageService } from 'astro/config'
 import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis'
 import remarkToc from 'remark-toc'
 import UnoCSS from 'unocss/astro'
-
-import mdx from '@astrojs/mdx'
 import { remarkReadingTime } from './src/utils/remarkReadingTime'
+
+import cloudflare from '@astrojs/cloudflare'
 
 // https://astro.build/config
 export default defineConfig({
@@ -45,4 +46,9 @@ export default defineConfig({
     remarkPlugins: [remarkToc, remarkReadingTime],
     rehypePlugins: [rehypeAccessibleEmojis],
   },
+  image: {
+    service: passthroughImageService(),
+  },
+  output: 'server',
+  adapter: cloudflare(),
 })
