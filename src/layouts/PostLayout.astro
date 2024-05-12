@@ -11,6 +11,7 @@ interface Props {
 const { post } = Astro.props
 const { headings } = await post.render()
 ---
+
 <Layout title={post.data.title} description={post.data.description ?? ""}>
     <div class="m-auto mb-8">
 
