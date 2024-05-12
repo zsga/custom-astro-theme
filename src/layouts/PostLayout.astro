@@ -11,9 +11,9 @@ const { post } = Astro.props
 const { headings } = await post.render()
 ---
 <Layout title={post.data.title} description={post.data.description ?? ""}>
-    <div class="m-auto mb-8">
+    <div class="m-auto mb-8 mx-6">
         {headings.length && post}
-        <div class="mt-8 gap-x10 lg:flex lg:items-start">
+        <div>
             <article class="md-content">
                 <slot />
             </article>

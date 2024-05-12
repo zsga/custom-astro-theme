@@ -21,11 +21,12 @@ export default defineConfig({
   markdown: {
     syntaxHighlight: 'shiki',
     shikiConfig: {
+      // theme: 'dracula',
       themes: {
-        dark: 'github-dark',
         light: 'github-light',
+        dark: 'github-dark',
       },
-      // Enable word wrap to prevent horizontal scrolling
+      cssVariablePrefix: '--s-',
       wrap: true,
       transformers: [
         transformerTwoslash({

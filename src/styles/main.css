@@ -3,6 +3,7 @@
     --c-scrollbar: #eee;
     --c-scrollbar-hover: #bbb;
     --c-color-green: #18794e;
+    --c-color-green-soft: rgba(16, 185, 129, 0.14);
 
     --c-code-bg: rgba(142, 150, 170, 0.14);
     --c-code-font-size: 0.875em;
@@ -17,7 +18,7 @@
 
     --c-code-line-diff-remove-color: var(--c-code-line-error-color);
     --c-code-line-diff-remove-symbol-color: #b8272c;
-    --c-code-line-diff-add-color: rgba(16, 185, 129, 0.14);
+    --c-code-line-diff-add-color: var(--c-color-green-soft);
     --c-code-line-diff-add-symbol-color: var(--c-color-green);
 }
 
@@ -32,6 +33,7 @@ html.dark {
     --c-scrollbar: #111;
     --c-scrollbar-hover: #222;
     --c-color-green: #3dd68c;
+    --c-color-green-soft: rgba(16, 185, 129, 0.16);
 
     --c-code-bg: rgba(101, 117, 133, 0.16);
     --c-code-color: #a8b1ff;
@@ -40,7 +42,6 @@ html.dark {
     --c-code-line-error-color: rgba(244, 63, 94, 0.16);
     --c-code-line-warning-color: rgba(234, 179, 8, 0.16);
     --c-code-line-diff-remove-symbol-color: #f66f81;
-    --c-code-line-diff-add-color: rgba(16, 185, 129, 0.16);
 }
 
 ::selection {
