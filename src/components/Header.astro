@@ -15,7 +15,7 @@ const { pathname } = Astro.url
           <a href="/posts" class:list={["nav-link", pathname == "/posts" ? activeStyle : inactiveStyle]}>Blog</a>
         </li>
         <li class="nav-item">
-          <a href="/tags" class:list={["nav-link", pathname == "/tags" ? activeStyle : inactiveStyle]}>Tags</a>
+          <a href="/tags" data-astro-prefetch class:list={["nav-link", pathname == "/tags" ? activeStyle : inactiveStyle]}>Tags</a>
         </li>
     </ul>
     <ThemeIcon />

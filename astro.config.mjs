@@ -16,6 +16,7 @@ import cloudflare from '@astrojs/cloudflare'
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://lottee.dev',
   integrations: [
     UnoCSS({
       injectReset: true,
@@ -49,6 +50,7 @@ export default defineConfig({
   image: {
     service: passthroughImageService(),
   },
+  prefetch: true,
   output: 'server',
   adapter: cloudflare(),
 })

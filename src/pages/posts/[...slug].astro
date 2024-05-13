@@ -6,6 +6,7 @@ import '@shikijs/twoslash/style-rich.css'
 import PreWrapper from '@/components/PreWrapper.astro'
 import { formatDate } from '@/utils/date'
 
+export const prerender = true
 export const getStaticPaths = (async () => {
   const blogEntries = await getCollection('posts')
   return blogEntries.map((entry) => ({
@@ -13,8 +14,6 @@ export const getStaticPaths = (async () => {
     props: { entry },
   }))
 }) satisfies GetStaticPaths
-
-export const prerender = true
 
 const { entry } = Astro.props
 const { Content, remarkPluginFrontmatter } = await entry.render()
@@ -45,7 +44,7 @@ const { Content, remarkPluginFrontmatter } = await entry.render()
 
   <div class="flex flex-row items-center flex-wrap m-auto mt-2 mb-6 text-sm gap-2 sm:gap-3">
       { entry.data.tags?.map((item) => (
-        <a href={`/tags/${item}`} title="tag details">
+        <a data-astro-prefetch href={`/tags/${item}`} title="tag details">
           <span class="mr-1 text-pretty tag bg-gradient-to-lightblue"># {item}</span>
         </a>
       ))}

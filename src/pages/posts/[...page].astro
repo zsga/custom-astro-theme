@@ -5,6 +5,7 @@ import Layout from '@/layouts/Layout.astro'
 import { getAllPosts, sortMDByDate } from '@/utils/post'
 import type { GetStaticPaths, Page } from 'astro'
 
+export const prerender = true
 export const getStaticPaths = (async ({ paginate }) => {
   const allPosts = await getAllPosts()
   const allPostsByDate = sortMDByDate(allPosts)
@@ -14,7 +15,6 @@ export const getStaticPaths = (async ({ paginate }) => {
 interface Props {
   page: Page<CollectionEntry<'posts'>>
 }
-export const prerender = true
 
 const { page } = Astro.props
 ---
