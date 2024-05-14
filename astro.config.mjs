@@ -31,7 +31,7 @@ export default defineConfig({
         light: 'github-light',
         dark: 'github-dark',
       },
-      cssVariablePrefix: '--s-',
+      langs: ['astro', 'css', 'rust', 'go', 'python', 'html', 'javascript'],
       wrap: true,
       transformers: [
         transformerTwoslash({

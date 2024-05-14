@@ -37,3 +37,27 @@ export function getUniqueTagsWithCount(
     ),
   ].sort((a, b) => b[1] - a[1])
 }
+
+export function getUniqueCategories(posts: Array<CollectionEntry<'posts'>>) {
+  const categories = posts.flatMap((post) => {
+    if (!post.data.category) {
+      return ''
+    }
+    return post.data.category
+  })
+
+  return [...new Set(categories)]
+}
+
+export function getUniqueCategoriesWithCount(
+  posts: Array<CollectionEntry<'posts'>>,
+) {
+  const uniqueCategories = getUniqueCategories(posts)
+
+  return [
+    ...uniqueCategories.reduce(
+      (acc, cate) => acc.set(cate, (acc.get(cate) || 0) + 1),
+      new Map<string, number>(),
+    ),
+  ].sort((a, b) => b[1] - a[1])
+}

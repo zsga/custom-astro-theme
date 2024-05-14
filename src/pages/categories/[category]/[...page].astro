@@ -1,28 +1,28 @@
 ---
 import type { CollectionEntry } from 'astro:content'
+// import Category from '@/components/Category.astro'
 import PostPreview from '@/components/PostPreview.astro'
-import Tag from '@/components/Tag.astro'
 import Layout from '@/layouts/Layout.astro'
-import { getAllPosts, getUniqueTags, sortMDByDate } from '@/utils/post'
+import { getAllPosts, getUniqueCategories, sortMDByDate } from '@/utils/post'
 import type { GetStaticPaths, Page } from 'astro'
 
 export const prerender = true
 export const getStaticPaths = (async ({ paginate }) => {
   const allPosts = await getAllPosts()
   const allPostsByDate = sortMDByDate(allPosts)
-  const uniqueTags = getUniqueTags(allPostsByDate)
+  const uniqueCategories = getUniqueCategories(allPostsByDate)
 
-  return uniqueTags.flatMap((tag) => {
+  return uniqueCategories.flatMap((category) => {
     const filterPosts = allPostsByDate.filter((post) => {
-      if (post.data.tags) {
-        return post.data.tags.includes(tag)
+      if (post.data.category) {
+        return post.data.category === category
       }
       return false
     })
 
     return paginate(filterPosts, {
       pageSize: 10,
-      params: { tag },
+      params: { category },
     })
   })
 }) satisfies GetStaticPaths
@@ -32,12 +32,12 @@ interface Props {
 }
 
 const { page } = Astro.props
-const { tag } = Astro.params
+const { category } = Astro.params
 ---
 
-<Layout title={`Tag: ${tag}`} description={`View all posts with the tag - ${tag}`}>
+<Layout title={`Category: ${category}`} description={`View all posts with the category - ${category}`}>
     <h1 class="mb-6 mt-5 flex items-end gap-x-2 text-2xl font-bold">
-        <Tag name={tag} link={false} />
+        Category: <span class="mr-1 text-pretty tag bg-gradient-to-lightblue font-grotesk">{category}</span>
     </h1>
     <section>
         <ul class="flex flex-col gap-y-3 text-start">

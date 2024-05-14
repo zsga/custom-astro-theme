@@ -4,6 +4,7 @@ import PostLayout from '@/layouts/PostLayout.astro'
 import type { GetStaticPaths } from 'astro'
 import '@shikijs/twoslash/style-rich.css'
 import PreWrapper from '@/components/PreWrapper.astro'
+import Tag from '@/components/Tag.astro'
 import { formatDate } from '@/utils/date'
 
 export const prerender = true
@@ -44,20 +45,9 @@ const { Content, remarkPluginFrontmatter } = await entry.render()
 
   <div class="flex flex-row items-center flex-wrap m-auto mt-2 mb-6 text-sm gap-2 sm:gap-3">
       { entry.data.tags?.map((item) => (
-        <a data-astro-prefetch href={`/tags/${item}`} title="tag details">
-          <span class="mr-1 text-pretty tag bg-gradient-to-lightblue"># {item}</span>
-        </a>
+        <Tag name={item} link={true} />
       ))}
   </div>
 
   <Content components={{pre: PreWrapper}} />
 </PostLayout>
-
-<style>
-  .tag {
-    color: rgb(20, 184, 166, 1);
-    background-color: rgb(20, 184, 166, 0.2);
-    border-radius: 3px;
-    padding: 2px 5px;
-  }
-</style>

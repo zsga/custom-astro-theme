@@ -26,10 +26,11 @@ html {
     background-color: var(--c-bg);
     overflow-x: hidden;
     overflow-y: auto;
+    font-family: "Space Grotesk";
 }
 
 html.dark {
-    --c-bg: #050505;
+    --c-bg: #000;
     --c-scrollbar: #111;
     --c-scrollbar-hover: #222;
     --c-color-green: #3dd68c;
