@@ -26,6 +26,7 @@ const { Content, remarkPluginFrontmatter } = await entry.render()
     <>
       <div class="i-ri:calendar-line mr-1"></div>
       { formatDate(entry.data.createdAt, false) }
+      { entry.data.updatedAt ? <span id="update-time" title={formatDate(entry.data.updatedAt, false)}>(已编辑)</span> : ""  }
     </>
 
     <>
@@ -51,3 +52,9 @@ const { Content, remarkPluginFrontmatter } = await entry.render()
 
   <Content components={{pre: PreWrapper}} />
 </PostLayout>
+
+<style>
+  #update-time {
+    margin-left: 4px;
+  }
+</style>
